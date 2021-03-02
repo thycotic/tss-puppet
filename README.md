@@ -31,22 +31,25 @@ You must also use a supported OS. See [limitations](#limitations) for a list of 
 
 ### Installation
 
-This module can be cloned directly into your `modules/` folder for your environment. You can validate this by running `puppet module list` to ensure Puppet recognizes it as a valid module.
+This module can be cloned directly into your `modules/` folder for your environment and rename the folder to `tss/` so that puppets is able to compile the catalog and find the `tss` resource. You can validate this by running `puppet module list` to ensure Puppet recognizes it as a valid module.
 
 ## Usage
 
-There are two classes that can be instantiated in your `manifest` file. Instantiate the appropriate class (or both) depending on which of the Thycotic services you depend.
+Your TSS secret can be made available by initiating a single class:
 
-- `class { 'thycotic_tss': }` (_not required_)
-- `class { 'thycotic_tss::tss': }`
+```
+class { 'tss': }
+```
 
-The `thycotic_tss` base class is _**optional**_ in all cases. If you would like to return the secrets metadata in addition to the secret itself, you can set the `thycotic_tss::metadata` property to `true`. The default is `false`.
+If you would like to return the secrets metadata in addition to the secret itself, you can set the `dsv::metadata` property to `true`. The default is `false`.
+
+You can access your returned secret with the `tss::secret` property.
 
 > It is **recommended** that you use **Hiera** for configuration.
 
 ### TSS Configuration
 
-`thycotic_tss::tss` requires the following properties to be set:
+`tss` requires the following properties to be set:
 
 - `username` — The client's username for authentication
 - `password` — The client's password for authentication
@@ -57,11 +60,10 @@ An example:
 
 ```
 # Example config in common.yaml
-
-thycotic_tss::tss::username: definitelynotroot
-thycotic_tss::tss::password: notrooteither
-thycotic_tss::tss::server_url: https://mysecretserver.org
-thycotic_tss::tss::secret_id: 1
+tss::username: definitelynotroot
+tss::password: notrooteither
+tss::server_url: https://mysecretserver.org
+tss::secret_id: 1
 ```
 
 ## Limitations
