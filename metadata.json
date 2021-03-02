@@ -1,10 +1,11 @@
 {
   "name": "thycotic-tss",
   "version": "0.1.0",
-  "author": "thycotic",
-  "summary": "test",
+  "author": "Ricky White, John Poulin",
+  "summary": "This module facilitates the consumption of secrets from Thycotic Secret Server",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/Thycotic/tss-puppet",
+  "issues_url": "https://github.com/Thycotic/tss-puppet/issues",
   "dependencies": [],
   "operatingsystem_support": [
     {
@@ -28,5 +29,6 @@
   ],
   "pdk-version": "1.18.1",
   "template-url": "pdk-default#1.18.1",
-  "template-ref": "tags/1.18.1-0-g3d2e75c"
+  "template-ref": "tags/1.18.1-0-g3d2e75c",
+  "tags":["thycotic", "devops", "secret", "vault"]
 }
